@@ -1,11 +1,13 @@
 from kivy.app import App
+from kivy.properties import ObjectProperty
 from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.label import Label
-from kivy.uix.textinput import TextInput
-from kivy.uix.button import Button
-from kivy.uix.popup import Popup
+from kivy.core.window import Window
+from kivy.config import Config
 
 
+Config.set('graphics', 'resizable', False)
+Config.set('graphics', 'width', '750')
+Config.set('graphics', 'height', '150')
 # class ConfirmButton(Button):
 #     def on_touch_down(self, touch):
 #         popup = Popup(title='Test popup', content=Label(text='Hello world'),
@@ -39,13 +41,16 @@ from kivy.uix.popup import Popup
 
 
 class RootWidget(BoxLayout):
-    pass
+    folder_path = ObjectProperty(None)
+    spinner = ObjectProperty(None)
 
 
 class MainApp(App):
 
     def build(self):
         self.root = root = RootWidget()
+        Window.size = (1000, 1000)
+        Config.set('graphics', 'resizable', False)
         return root
 
 
